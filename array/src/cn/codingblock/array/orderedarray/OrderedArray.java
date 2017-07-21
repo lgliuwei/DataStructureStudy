@@ -21,28 +21,18 @@ public class OrderedArray extends BaseArray {
         if (mSize == mMaxSize) {
             throw new ArrayIndexOutOfBoundsException("数组已经满了");
         }
-        int j = -1;
-        if (mSize == 0) {
-            mArray[0] = e;
-            j = 0;
-        } else {
-            for (int i = 0; i < mSize; i++) {
-                if (e < mArray[i]) {
-                    j = i;
-                    break;
-                }
-            }
-            if (j == -1) {
-                mArray[mSize] = e;
-            } else {
-                for (int n = mSize; n > j; n--) {
-                    mArray[n] = mArray[n-1];
-                }
-                mArray[j] = e;
-            }
+
+        int i;
+        for (i = 0; i < mSize; i++) {
+            if (e < mArray[i]) break;
         }
+        for (int j = mSize; j > i; j--) {
+            mArray[j] = mArray[j-1];
+        }
+        mArray[i] = e;
         mSize++;
-        return j;
+
+        return i;
     }
 
     /**
