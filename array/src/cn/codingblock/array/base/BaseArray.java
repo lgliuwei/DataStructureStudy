@@ -49,8 +49,6 @@ public abstract class BaseArray {
 
     public abstract int insert(int e) throws ArrayIndexOutOfBoundsException;
 
-    public abstract int find(int e);
-
     public abstract int delete(int e);
 
     public void display(){

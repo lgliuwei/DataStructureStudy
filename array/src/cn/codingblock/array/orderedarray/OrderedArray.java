@@ -21,7 +21,6 @@ public class OrderedArray extends BaseArray {
         if (mSize == mMaxSize) {
             throw new ArrayIndexOutOfBoundsException("数组已经满了");
         }
-
         int i;
         for (i = 0; i < mSize; i++) {
             if (e < mArray[i]) break;
@@ -35,16 +34,29 @@ public class OrderedArray extends BaseArray {
         return i;
     }
 
+    @Override
+    public int delete(int e) {
+        int index = findByHalf(e);
+        if (index >= 0) {
+            for (int i = index; i < mSize; i++) {
+                mArray[i] = mArray[i + 1];
+            }
+            mSize--;
+        }
+        return index;
+    }
+
     /**
      * 二分查找
      * @param e
      * @return
      */
-    @Override
-    public int find(int e) {
+    public int findByHalf(int e) {
         int lowIndex = 0;
         int highIndex = mSize - 1;
 
+        int findTimes = 1;
+        println("查找次数:" + findTimes);
         if (e < mArray[lowIndex] || e > mArray[highIndex]) {
             return -1;
         }
@@ -52,6 +64,8 @@ public class OrderedArray extends BaseArray {
         int currentIndex;
 
         while(true){
+            findTimes++;
+            println("查找次数:" + findTimes);
             currentIndex = (lowIndex + highIndex) / 2;
             if (e == mArray[currentIndex]) {
                 return currentIndex;
@@ -65,15 +79,26 @@ public class OrderedArray extends BaseArray {
         }
     }
 
-    @Override
-    public int delete(int e) {
-        int index = find(e);
-        if (index >= 0) {
-            for (int i = index; i < mSize; i++) {
-                mArray[i] = mArray[i + 1];
-            }
-            mSize--;
+    /**
+     * 线性查找
+     * @param e
+     * @return
+     */
+    public int findByLiner(int e) {
+        int findTimes = 1;
+        println("查找次数:" + findTimes);
+        if (e < mArray[0] || e > mArray[mSize - 1]) {
+            return -1;
         }
-        return index;
+        for(int i = 0; i < mSize; i++) {
+            findTimes++;
+            println("查找次数:" + findTimes);
+            if (e == mArray[i]) {
+                return i;
+            } else if (mSize > (i + 1) &&e > mArray[i] && e < mArray[i + 1]) {
+                return -1;
+            }
+        }
+        return -1;
     }
 }
