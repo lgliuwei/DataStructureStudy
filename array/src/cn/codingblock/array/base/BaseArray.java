@@ -40,6 +40,36 @@ public abstract class BaseArray {
     }
 
     /**
+     * 随机数创建数组(无重复)
+     * @param size
+     * @return
+     */
+    public void initArrayByRandomNoRepeat(int size) throws ArrayIndexOutOfBoundsException {
+        if (size > mMaxSize) {
+            throw new ArrayIndexOutOfBoundsException("size不能大于数组的maxSize");
+        } else {
+            mSize = size;
+            int n = 0;
+            boolean noRepeat;
+            while (n < mSize) {
+                noRepeat = true;
+                int temp = getRandomInt(mSize * 10);
+                for (int i = 0; i < n; i++) {
+                    if (temp == mArray[i]) {
+                        noRepeat = false;
+                        break;
+                    }
+                }
+                if (noRepeat) {
+                    mArray[n] = temp;
+                    n++;
+                }
+            }
+
+        }
+    }
+
+    /**
      * 获取一个随机整数
      * @return
      */
