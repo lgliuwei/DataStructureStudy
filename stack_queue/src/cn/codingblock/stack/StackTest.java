@@ -26,10 +26,11 @@ public class StackTest {
 //        Logger.print("peek:" + stack.peek());
 
         /* 2、字符串逆序 */
-        StringReverser stringReverser = new StringReverser("dlrow olleh");
-        Logger.println("reverser:" + stringReverser.reverser());
+//        StringReverser stringReverser = new StringReverser("dlrow olleh");
+//        Logger.println("reverser:" + stringReverser.reverser());
 
-//        SeparatorMatch match = new SeparatorMatch("a+b}+c3");
-//        match.doMatch();
+        /* 3、分割符校验示例 */
+        SeparatorMatch match = new SeparatorMatch("[a+b+c3");
+        Logger.println("验证:" + match.doMatch());
     }
 }

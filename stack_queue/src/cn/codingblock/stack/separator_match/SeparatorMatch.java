@@ -10,7 +10,7 @@ import cn.codingblock.stack.reverser.CharStack;
 public class SeparatorMatch {
 
     private char[] leftSep = new char[] {'{','[','('};
-    private char[] rightSep = new char[] {'{',']',')'};
+    private char[] rightSep = new char[] {'}',']',')'};
 
     private String input;
 
@@ -27,12 +27,16 @@ public class SeparatorMatch {
                 if (matchLeftSep(c) != -1) {
                     charStack.push(c);
                 } else {
-                    // TODO: 17/7/27 此处有问题,对于出现的未匹配的右分割符无法正确识别 
                     int index = matchRightSep(c);
                     if (index != -1) {
-                        char temp = charStack.pop();
-                        if (leftSep[index] != temp) {
-                            Logger.print("错误:缺少分隔符:" + rightSep[matchLeftSep(temp)]);
+                        if (!charStack.isEmpty()) {
+                            char temp = charStack.pop();
+                            if (leftSep[index] != temp) {
+                                Logger.print("第" + i + "个字符错误:'" + c + "'");
+                                return false;
+                            }
+                        } else {
+                            Logger.print("第" + i + "个字符错误:'" + c + "'");
                             return false;
                         }
                     }
