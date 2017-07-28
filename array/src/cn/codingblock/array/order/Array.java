@@ -1,7 +1,7 @@
 package cn.codingblock.array.order;
 
 import cn.codingblock.array.base.BaseArray;
-import cn.codingblock.array.utils.Logger;
+import cn.codingblock.utils.Logger;
 
 /**
  * 冒泡排序

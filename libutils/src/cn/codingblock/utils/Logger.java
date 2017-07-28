@@ -1,4 +1,4 @@
-package cn.codingblock.array.utils;
+package cn.codingblock.utils;
 
 /**
  * 日志打印类

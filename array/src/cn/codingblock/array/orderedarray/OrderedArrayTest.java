@@ -1,6 +1,6 @@
 package cn.codingblock.array.orderedarray;
 
-import cn.codingblock.array.utils.Logger;
+import cn.codingblock.utils.Logger;
 
 public class OrderedArrayTest {
 

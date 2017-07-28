@@ -1,6 +1,6 @@
 package cn.codingblock.array.base;
 
-import cn.codingblock.array.utils.Logger;
+import cn.codingblock.utils.Logger;
 
 import java.util.Random;
 
