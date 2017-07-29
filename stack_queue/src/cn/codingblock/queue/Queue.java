@@ -39,12 +39,12 @@ public class Queue {
             mSize--;
             return e;
         }
-        throw new NullPointerException("empty error!");
+        throw new NullPointerException("remove error, queue is empty!");
     }
 
     public int peek() throws NullPointerException{
         if (isEmpty()) {
-            throw new NullPointerException("empty error!");
+            throw new NullPointerException("peek error, queue is empty!");
         } else {
             return mArray[front];
         }
