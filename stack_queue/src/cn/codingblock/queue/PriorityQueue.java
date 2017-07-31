@@ -15,7 +15,7 @@ public class PriorityQueue {
     public PriorityQueue(int maxSize) {
         mMaxSize = maxSize;
         mArray = new int[mMaxSize];
-        mItem = -1;
+        mItem = 0;
     }
 
     /**
@@ -26,26 +26,24 @@ public class PriorityQueue {
         if (isFull()) {
             Logger.print("insert error, queue is full!");
         } else {
-            int j = 0;
-            int i;
-            if (mItem >= 0) {
-                for (i = 0; i < mItem + 1; i++) {
+            int i = -1;
+            if (mItem > 0) {
+                for (i = mItem - 1; i >= 0; i--) {
                     if (mArray[i] > e) {
+                        mArray[i + 1] = mArray[i];
+                    } else {
                         break;
                     }
                 }
-                for (j = mItem + 1; j > i; j--) {
-                    mArray[j] = mArray[j - 1];
-                }
             }
-            mArray[j] = e;
+            mArray[i + 1] = e;
             mItem++;
         }
     }
 
     public int remove() throws NullPointerException {
         if (!isEmpty()) {
-            return mArray[mItem--];
+            return mArray[--mItem];
         } else {
             throw new NullPointerException("remove error, queue is empty!");
         }
@@ -53,7 +51,7 @@ public class PriorityQueue {
 
     public int peek() throws NullPointerException {
         if (!isEmpty()) {
-            return mArray[mItem];
+            return mArray[mItem - 1];
         } else {
             throw new NullPointerException("remove error, queue is empty!");
         }
@@ -64,10 +62,10 @@ public class PriorityQueue {
     }
 
     public boolean isEmpty(){
-        return mItem == -1;
+        return mItem == 0;
     }
 
     public boolean isFull(){
-        return mItem == mMaxSize - 1;
+        return mItem == mMaxSize;
     }
 }
