@@ -27,7 +27,12 @@ public class PriorityQueue {
             Logger.print("insert error, queue is full!");
         } else {
             int i = -1;
+            // 如果mItem为0,直接插入
             if (mItem > 0) {
+                /**
+                 * 从数组的尾部开始比较,凡是大于e的元素就往后挪一格,直到发现不大于的e的元素,记住其下标,并将e插入其前一格。
+                 * 注意:最后一次循环结束后 i 为 -1,证明全部都比e大,这时候e的位置为 -1 前面,即为0的位置。
+                 */
                 for (i = mItem - 1; i >= 0; i--) {
                     if (mArray[i] > e) {
                         mArray[i + 1] = mArray[i];
