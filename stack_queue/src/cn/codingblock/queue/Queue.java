@@ -3,6 +3,7 @@ package cn.codingblock.queue;
 import cn.codingblock.utils.Logger;
 
 /**
+ * 队列(FIFO)
  * Created by liuwei on 17/7/28.
  */
 public class Queue {

@@ -1,7 +1,7 @@
 package cn.codingblock.stack;
 
 /**
- * 栈
+ * 栈(LIFO)
  * Created by liuwei on 17/7/25.
  */
 public class Stack {
