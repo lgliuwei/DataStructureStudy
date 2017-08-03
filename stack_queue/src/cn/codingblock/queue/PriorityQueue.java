@@ -1,6 +1,6 @@
 package cn.codingblock.queue;
 
-import cn.codingblock.utils.Logger;
+import cn.codingblock.utils.log.Logger;
 
 /**
  * 以数组方式实现的优先级队列(标准的优先级队列用堆实现比较合适)

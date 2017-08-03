@@ -1,6 +1,6 @@
 package cn.codingblock.queue;
 
-import cn.codingblock.utils.Logger;
+import cn.codingblock.utils.log.Logger;
 
 /**
  * 不带计数项的队列

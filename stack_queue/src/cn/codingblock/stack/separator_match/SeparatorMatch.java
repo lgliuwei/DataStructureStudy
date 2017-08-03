@@ -1,6 +1,6 @@
 package cn.codingblock.stack.separator_match;
 
-import cn.codingblock.utils.Logger;
+import cn.codingblock.utils.log.Logger;
 import cn.codingblock.stack.reverser.CharStack;
 
 /**

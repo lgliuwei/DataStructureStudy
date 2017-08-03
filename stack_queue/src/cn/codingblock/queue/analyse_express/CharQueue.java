@@ -1,4 +1,4 @@
-package cn.codingblock.queue;
+package cn.codingblock.queue.analyse_express;
 
 import cn.codingblock.utils.log.Logger;
 
@@ -6,20 +6,20 @@ import cn.codingblock.utils.log.Logger;
  * 队列(FIFO)
  * Created by liuwei on 17/7/28.
  */
-public class Queue {
+public class CharQueue {
 
-    private int[] mArray;
+    private char[] mArray;
     private int mMaxSize;
     private int front = 0; // 队头
     private int rear = -1; // 队尾
     private int mSize = 0; // 个数
 
-    public Queue(int maxSize) {
+    public CharQueue(int maxSize) {
         this.mMaxSize = maxSize;
-        this.mArray = new int[maxSize];
+        this.mArray = new char[maxSize];
     }
 
-    public void insert(int e){
+    public void insert(char e){
         if (!isFull()) {
             if (rear == mMaxSize - 1) {
                 rear = -1;
@@ -31,9 +31,9 @@ public class Queue {
         }
     }
 
-    public int remove() throws NullPointerException{
+    public char remove() throws NullPointerException{
         if (!isEmpty()) {
-            int e = mArray[front++];
+            char e = mArray[front++];
             if (front == mMaxSize) {
                 front = 0;
             }
@@ -43,7 +43,7 @@ public class Queue {
         throw new NullPointerException("remove error, queue is empty!");
     }
 
-    public int peek() throws NullPointerException{
+    public char peek() throws NullPointerException{
         if (isEmpty()) {
             throw new NullPointerException("peek error, queue is empty!");
         } else {

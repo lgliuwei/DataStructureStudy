@@ -1,8 +1,6 @@
 package cn.codingblock.queue;
 
-import cn.codingblock.utils.Logger;
-
-import java.util.Properties;
+import cn.codingblock.utils.log.Logger;
 
 /**
  * Created by liuwei on 17/7/29.

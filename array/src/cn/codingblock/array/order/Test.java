@@ -1,6 +1,6 @@
 package cn.codingblock.array.order;
 
-import cn.codingblock.utils.Logger;
+import cn.codingblock.utils.log.Logger;
 
 public class Test {
 

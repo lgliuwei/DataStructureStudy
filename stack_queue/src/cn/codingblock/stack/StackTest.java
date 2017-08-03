@@ -1,7 +1,6 @@
 package cn.codingblock.stack;
 
-import cn.codingblock.stack.reverser.StringReverser;
-import cn.codingblock.utils.Logger;
+import cn.codingblock.utils.log.Logger;
 import cn.codingblock.stack.separator_match.SeparatorMatch;
 
 public class StackTest {
