@@ -9,32 +9,37 @@ import cn.codingblock.utils.text.TextUtils;
  */
 public class AnalyseExpress {
 
-    private String prefixExpress;
+    private String midfixExpress;
     private String suffixExpress;
     private float result;
     private CharStack charStack;
     private CharQueue charQueue;
 
-    public AnalyseExpress(String prefixExpress) {
-        this.prefixExpress = prefixExpress;
-        if (prefixExpress.length() > 0) {
-            this.charStack = new CharStack(prefixExpress.length());
-            this.charQueue = new CharQueue(prefixExpress.length());
+    public AnalyseExpress(String midfixExpress) {
+        this.midfixExpress = midfixExpress;
+        if (midfixExpress.length() > 0) {
+            this.charStack = new CharStack(midfixExpress.length());
+            this.charQueue = new CharQueue(midfixExpress.length());
         }
     }
 
     /**
-     * 将算术表达式转换成中缀形式
+     * 将算术表达式转换成后缀形式
      * @return
      */
     public void transferExpress(){
-
-        if (TextUtils.isEmpty(prefixExpress)) {
+        /**
+         * 此算法有bug:
+         * 输入:a-b/d+(c-f)/(e-g)*(j+h)/(k-n)
+         * 输出:a b d / c f - e g - / j h + * k n - / + -(错误)
+         * 这是因为读取到 - 入栈 读取到 + 入栈,此时栈内为 -+,读取到最后全部出栈 顺序编程了 +-
+         */
+        if (TextUtils.isEmpty(midfixExpress)) {
             return;
         }
 
-        for (int i = 0; i < prefixExpress.length(); i++) {
-            char c = prefixExpress.charAt(i);
+        for (int i = 0; i < midfixExpress.length(); i++) {
+            char c = midfixExpress.charAt(i);
             if (c == '+') {
                 charStack.push(c);
             } else if (c == '-') {
@@ -56,8 +61,8 @@ public class AnalyseExpress {
             } else {
                 charQueue.insert(c);
                 if (!charStack.isEmpty() && charStack.peek() == '(') {
-                    charStack.pop();
-                } else if (i == prefixExpress.length() - 1) {
+                    charStack.pop(); // 如果栈顶为'(',则舍弃
+                } else if (i == midfixExpress.length() - 1) {
                     while (!charStack.isEmpty()) {
                         charQueue.insert(charStack.pop());
                     }
@@ -74,13 +79,20 @@ public class AnalyseExpress {
         }
     }
 
+    public String calculate(){
+
+
+
+        return null;
+    }
+
     /**
      * 前一位是否优先入栈
      * @param index
      * @return
      */
     private boolean isPrePriority(char symbol, int index){
-        if (index >= prefixExpress.length()) {
+        if (index >= midfixExpress.length()) {
             // 此情况表明表达式结束
             return true;
         }
@@ -91,7 +103,7 @@ public class AnalyseExpress {
                 return true;
         }
 
-        switch (prefixExpress.charAt(index)) {
+        switch (midfixExpress.charAt(index)) {
             case ')':return true;
             case '*':
             case '/':return false;
