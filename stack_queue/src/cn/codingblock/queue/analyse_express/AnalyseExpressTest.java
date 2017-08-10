@@ -7,7 +7,7 @@ package cn.codingblock.queue.analyse_express;
 public class AnalyseExpressTest {
 
     public static void main(String[] strs) {
-        AnalyseExpress analyseExpress = new AnalyseExpress("(a-b)/d+(c-f)/(e-g)*(j+h)/(k-n)");
+        AnalyseExpress analyseExpress = new AnalyseExpress("a-b/d+(c-f)/(e-g)*(j+h)/(k-n)");
         analyseExpress.transferExpress();
     }
 }

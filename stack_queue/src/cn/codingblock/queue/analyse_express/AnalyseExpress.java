@@ -17,10 +17,6 @@ public class AnalyseExpress {
 
     public AnalyseExpress(String midfixExpress) {
         this.midfixExpress = midfixExpress;
-        if (midfixExpress.length() > 0) {
-            this.charStack = new CharStack(midfixExpress.length());
-            this.charQueue = new CharQueue(midfixExpress.length());
-        }
     }
 
     /**
@@ -37,6 +33,9 @@ public class AnalyseExpress {
         if (TextUtils.isEmpty(midfixExpress)) {
             return;
         }
+
+        this.charStack = new CharStack(midfixExpress.length());
+        this.charQueue = new CharQueue(midfixExpress.length());
 
         for (int i = 0; i < midfixExpress.length(); i++) {
             char c = midfixExpress.charAt(i);
@@ -60,15 +59,22 @@ public class AnalyseExpress {
                 }
             } else {
                 charQueue.insert(c);
-                if (!charStack.isEmpty() && charStack.peek() == '(') {
+                /*if (!charStack.isEmpty() && charStack.peek() == '(') {
                     charStack.pop(); // 如果栈顶为'(',则舍弃
-                } else if (i == midfixExpress.length() - 1) {
+                } else */
+                if (i == midfixExpress.length() - 1) {
                     while (!charStack.isEmpty()) {
                         charQueue.insert(charStack.pop());
                     }
                 } else if (!charStack.isEmpty()) {
-                    if (isPrePriority(charStack.peek(), i + 1)) {
-                        charQueue.insert(charStack.pop());
+                    while (!charStack.isEmpty()) {
+                        if (charStack.peek() == '(') {
+                            charStack.pop();
+                        } else if (isPrePriority(charStack.peek(), i + 1)) {
+                            charQueue.insert(charStack.pop());
+                        } else {
+                            break;
+                        }
                     }
                 }
             }
@@ -79,10 +85,20 @@ public class AnalyseExpress {
         }
     }
 
+    /**
+     * 将算术表达式转换成后缀形式
+     * @return
+     */
+    public void transferExpress1(){
+        if (TextUtils.isEmpty(midfixExpress)) {
+            return;
+        }
+        this.charStack = new CharStack(midfixExpress.length());
+        this.charQueue = new CharQueue(midfixExpress.length());
+
+    }
+
     public String calculate(){
-
-
-
         return null;
     }
 

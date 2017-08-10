@@ -1,7 +1,6 @@
 package cn.codingblock.link;
 
 import cn.codingblock.utils.log.Logger;
-import sun.rmi.runtime.Log;
 
 /**
  * Created by liuwei on 17/8/9.
@@ -30,13 +29,13 @@ public class LinkTest {
         link.insertTail(3);
         Logger.println("删除前");
         link.display();
-        link.delete(3);
-        link.insertTail(4);
-        link.insertTail(4);
-        link.insertTail(4);
-        link.insertTail(4);
-        Logger.println("删除后");
-        link.display();
+//        link.delete(3);
+//        link.insertTail(4);
+//        link.insertTail(4);
+//        link.insertTail(4);
+//        link.insertTail(4);
+//        Logger.println("删除后");
+//        link.display();
 
     }
 }
