@@ -15,8 +15,8 @@ public class HeaderTailLink {
         this.tail = null;
     }
 
-    public void insertHeader(int id) {
-        Node node = new Node(id);
+    public void insertHeader(int val) {
+        Node node = new Node(val);
         if (isEmpty()) {
             tail = node; // 头部插入,如果链表为空时,需要同时把节点赋值给 tail
         }
@@ -24,8 +24,8 @@ public class HeaderTailLink {
         header = node;
     }
 
-    public void insertTail(int id) {
-        Node node = new Node(id);
+    public void insertTail(int val) {
+        Node node = new Node(val);
         if (isEmpty()) {
             header = node; // 尾部插入,如果链表为空时,需要同时把节点赋值给 header
         } else {
@@ -43,36 +43,38 @@ public class HeaderTailLink {
         return null;
     }
 
-    public Node delete(int id) {
+    public int delete(int val) {
+        int count = 0;
         if (!isEmpty()) {
-            Node node = header;
-            if (node.id == id) {
-                header = header.next;
-                return node;
-            }
-            while (node.next != null) {
-                if (node.next.id == id) {
-                    Node tempNode = node.next;
-                    node.next = node.next.next;
-
-                    if (node.next == null) {
-                        tail = node; // 双端链表删除逻辑与头部插入链表逻辑类似,只有这里需要注意,
-                                     // 当删除的节点为最后一个节点时,需要将tail往前提一个节点。
+            Node currentNode = header;
+            Node preNode = null;
+            while (currentNode != null) {
+                if (currentNode.val == val) {
+                    if (currentNode == header) {
+                        header = header.next;
+                        preNode = currentNode;
+                    } else {
+                        preNode.next = currentNode.next;
                     }
-
-                    return tempNode;
+                    count++;
+                    if (currentNode.next == null) {
+                        // 如果当前被删除的节点是最后一个节点的话,需要将tail赋值为当前节点的前一个节点
+                        tail = preNode;
+                    }
+                } else {
+                    preNode = currentNode;
                 }
-                node = node.next;
+                currentNode = currentNode.next;
             }
         }
-        return null;
+        return count;
     }
 
     public Node find(int id){
         if (!isEmpty()) {
             Node node = header;
             while (node != null) {
-                if (node.id == id) {
+                if (node.val == id) {
                     return node;
                 }
                 node = node.next;
@@ -88,10 +90,10 @@ public class HeaderTailLink {
     public void display() {
         if (!isEmpty()) {
             Node node = header;
-            Logger.print(node.id);
+            Logger.print(node.val);
             while (node.next != null) {
                 node = node.next;
-                Logger.print("->" + node.id);
+                Logger.print("->" + node.val);
             }
         } else {
             Logger.println("error!, link is emtpy");
