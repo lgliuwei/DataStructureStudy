@@ -89,4 +89,8 @@ public class HeaderLink {
             Logger.println("error!, link is emtpy");
         }
     }
+
+    public Node getLink() {
+        return header;
+    }
 }
