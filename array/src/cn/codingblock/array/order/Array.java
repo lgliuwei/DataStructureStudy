@@ -93,10 +93,4 @@ public class Array extends BaseArray {
 
         }
     }
-
-    private void swap(int index1, int index2) {
-        int temp = mArray[index1];
-        mArray[index1] = mArray[index2];
-        mArray[index2] = temp;
-    }
 }

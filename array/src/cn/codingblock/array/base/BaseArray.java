@@ -69,6 +69,13 @@ public abstract class BaseArray {
         }
     }
 
+    public void initArray(int[] array) {
+        mSize = array.length;
+        for (int i = 0; i < mSize; i++) {
+            mArray[i] = array[i];
+        }
+    }
+
     /**
      * 获取一个随机整数
      * @return
@@ -83,9 +90,15 @@ public abstract class BaseArray {
 
     public void display(){
         for (int i = 0; i < mSize; i++) {
-            print(mArray[i] + " ");
+            print(mArray[i] + ", ");
         }
         println("");
+    }
+
+    protected void swap(int aIndex, int bIndex) {
+        int temp = mArray[aIndex];
+        mArray[aIndex] = mArray[bIndex];
+        mArray[bIndex] = temp;
     }
 
     protected void print(Object o){
@@ -95,4 +108,5 @@ public abstract class BaseArray {
     protected void println(Object o){
         Logger.println(o);
     }
+
 }
