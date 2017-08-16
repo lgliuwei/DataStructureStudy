@@ -1,7 +1,6 @@
 package cn.codingblock.sort.partition;
 
 import cn.codingblock.array.base.BaseArray;
-import cn.codingblock.utils.log.Logger;
 
 /**
  * Created by liuwei on 17/8/15.
