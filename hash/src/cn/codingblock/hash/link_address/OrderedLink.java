@@ -9,13 +9,14 @@ public class OrderedLink {
 
     private Node header;
 
-    public void insert(int val) {
-        Node newNode = new Node(val);
-
+    public void insert(Node newNode) {
+        if (newNode == null) {
+            return;
+        }
         Node currentNode = header;
         Node preNode = null;
 
-        while (currentNode != null && currentNode.val < val) {
+        while (currentNode != null && currentNode.val < newNode.val) {
             preNode = currentNode;
             currentNode = currentNode.next;
         }
