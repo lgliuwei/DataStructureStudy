@@ -3,6 +3,8 @@ package cn.codingblock.tree;
 import cn.codingblock.utils.log.Logger;
 
 /**
+ * 二叉树
+ *  层数 L = log2(N+1)
  * Created by liuwei on 17/8/16.
  */
 public class Tree {
